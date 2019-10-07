@@ -14,7 +14,7 @@
 		13A758481D12A3F5004488DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A758471D12A3F5004488DA /* Assets.xcassets */; };
 		13A7584B1D12A3F5004488DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A758491D12A3F5004488DA /* LaunchScreen.storyboard */; };
 		13A758651D12A42E004488DA /* SideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13A758581D12A3FF004488DA /* SideMenuController.framework */; };
-		13A758661D12A42E004488DA /* SideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13A758581D12A3FF004488DA /* SideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13A758661D12A42E004488DA /* SideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13A758581D12A3FF004488DA /* SideMenuController.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		13A758731D12D10B004488DA /* CustomSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A758721D12D10B004488DA /* CustomSideMenuController.swift */; };
 		13A758761D12D161004488DA /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A758751D12D161004488DA /* ContentViewController.swift */; };
 		13A758781D12D176004488DA /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A758771D12D176004488DA /* MenuController.swift */; };
@@ -196,7 +196,7 @@
 				TargetAttributes = {
 					13A7583C1D12A3F5004488DA = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 752CFWL5Y4;
+						DevelopmentTeam = YU28NKKTFR;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -206,6 +206,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -349,6 +350,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -390,6 +392,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -400,13 +403,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 752CFWL5Y4;
+				DEVELOPMENT_TEAM = YU28NKKTFR;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teodorpatras.sidemenucontroller.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -415,13 +418,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 752CFWL5Y4;
+				DEVELOPMENT_TEAM = YU28NKKTFR;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teodorpatras.sidemenucontroller.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -42,7 +42,8 @@ class CachingSideViewController: UITableViewController, SideMenuControllerDelega
         if let controller = sideMenuController?.viewController(forCacheIdentifier: controllerType.cacheIdentifier) {
             sideMenuController?.embed(centerViewController: controller)
         } else {
-            sideMenuController?.embed(centerViewController: UINavigationController(rootViewController: controllerType.init()), cacheIdentifier: controllerType.cacheIdentifier)
+            let navContr = UINavigationController(rootViewController: controllerType.init())
+            sideMenuController?.embed(centerViewController: navContr, cacheIdentifier: controllerType.cacheIdentifier)
         }
     }
     

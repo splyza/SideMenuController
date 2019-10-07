@@ -14,6 +14,7 @@ class CachingSideMenuController: SideMenuController {
     override func viewDidLoad() {
         super.viewDidLoad()
         performSegue(withIdentifier: "cachingEmbedSide", sender: nil)
-        embed(centerViewController: UINavigationController(rootViewController:FCViewController()), cacheIdentifier: FCViewController.cacheIdentifier)
+        let navCtr =  UINavigationController(rootViewController:FCViewController())
+        embed(centerViewController: navCtr, cacheIdentifier: FCViewController.cacheIdentifier)
     }
 }

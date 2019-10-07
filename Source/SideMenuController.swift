@@ -163,6 +163,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     var transitionInProgress = false
     var flickVelocity: CGFloat = 0
+    var customPreferStatusBarHidden = false
     
 
     lazy var sidePanelPosition: SidePanelPosition = {
@@ -183,6 +184,16 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setUpViewHierarchy()
+    }
+    
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            if let win = view.window?.windowScene?.statusBarManager {
+                customPreferStatusBarHidden = win.isStatusBarHidden
+            }
+        }
     }
     
     func setUpViewHierarchy() {
@@ -209,6 +220,14 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         coordinator.animate(alongsideTransition: { _ in
             self.repositionViews()
         }, completion: nil)
+    }
+    
+    override open var prefersStatusBarHidden: Bool {
+        if #available(iOS 13.0, *) {
+            return customPreferStatusBarHidden
+        } else {
+            return super.prefersStatusBarHidden
+        }
     }
     
     // MARK: - Configurations -
@@ -239,7 +258,6 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func configureViews(){
-        
         centerPanel = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
         view.addSubview(centerPanel)
         
@@ -281,8 +299,8 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         if statusBarHeight > DefaultStatusBarHeight && hidden == true {
             return
         }
+        changeStatusBar(statusBarHidden: hidden, behaviour:  _preferences.animating.statusBarBehaviour)
         
-        sbw?.set(hidden, withBehaviour: _preferences.animating.statusBarBehaviour)
         
         if _preferences.animating.statusBarBehaviour == StatusBarBehaviour.horizontalPan {
             if !hidden {
@@ -392,13 +410,18 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Computed variables -
     
-    fileprivate var sbw: UIWindow? {
+    fileprivate func changeStatusBar(statusBarHidden hidden: Bool, behaviour: SideMenuController.StatusBarBehaviour) {
+        
+        if #available(iOS 13.0, *) {
+            customPreferStatusBarHidden = hidden
+            return
+        }
         
         let s = "status"
         let b = "Bar"
         let w = "Window"
-        
-        return UIApplication.shared.value(forKey: s+b+w) as? UIWindow
+        let win = UIApplication.shared.value(forKey: s+b+w) as? UIWindow
+        win?.set(hidden, withBehaviour: behaviour)
     }
     
     fileprivate var showsStatusUnderlay: Bool {
