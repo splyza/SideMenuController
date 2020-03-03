@@ -251,7 +251,10 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 overlay.frame = self.centerPanelFrame
             }
             
-            self.view.layoutIfNeeded()
+            if self.isViewLoaded && self.view.window != nil {
+                self.view.layoutIfNeeded()
+            }
+            
         }
         
         previousStatusBarHeight = statusBarHeight
