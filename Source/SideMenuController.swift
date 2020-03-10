@@ -242,9 +242,11 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         if size.width == 0 && size.height == 0 {
             customSize = nil
         }
-        if let tempSize = customSize, tempSize.width > tempSize.height {
+        if let tempSize = customSize {
             let cosa = supportedInterfaceOrientations
-            if !cosa.contains(.landscape) {
+            if tempSize.width > tempSize.height && !cosa.contains(.landscape) {
+                customSize = CGSize(width: tempSize.height, height: tempSize.width)
+            } else if tempSize.width < tempSize.height && !cosa.contains(.portrait) {
                 customSize = CGSize(width: tempSize.height, height: tempSize.width)
             }
         }
