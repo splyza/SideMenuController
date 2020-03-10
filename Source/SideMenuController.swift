@@ -243,6 +243,10 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
             // reposition side panel
             self.sidePanel.frame = self.sidePanelFrame(customSize: size)
             
+            print(" SideMenu.repositionViews")
+            print(" - centerPanel: \(self.centerPanel.frame)")
+            print(" - sidePanel: \(self.sidePanel.frame)")
+            
             // hide or show the view under the status bar
             self.set(statusUnderlayAlpha: self.sidePanelVisible ? 1 : 0)
             
