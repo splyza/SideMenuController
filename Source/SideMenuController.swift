@@ -242,6 +242,12 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         if size.width == 0 && size.height == 0 {
             customSize = nil
         }
+        if let tempSize = customSize, tempSize.width > tempSize.height {
+            let cosa = supportedInterfaceOrientations
+            if !cosa.contains(.landscape) {
+                customSize = CGSize(width: tempSize.height, height: tempSize.width)
+            }
+        }
         
         UIView.animate(withDuration: 0.35) {
             self.centerPanel.frame = self.centerPanelFrame(customSize: customSize)
