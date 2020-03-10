@@ -232,23 +232,28 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Configurations -
     
-    @objc func repositionViews(to size: CGSize) {
+    @objc func repositionViews(to size: CGSize = .zero) {
         
         if sidePanelVisible {
             toggle()
         }
         
+        var customSize: CGSize? = size
+        if size.width == 0 && size.height == 0 {
+            customSize = nil
+        }
+        
         UIView.animate(withDuration: 0.35) {
-            self.centerPanel.frame = self.centerPanelFrame(customSize: size)
+            self.centerPanel.frame = self.centerPanelFrame(customSize: customSize)
             // reposition side panel
-            self.sidePanel.frame = self.sidePanelFrame(customSize: size)
+            self.sidePanel.frame = self.sidePanelFrame(customSize: customSize)
             
             // hide or show the view under the status bar
             self.set(statusUnderlayAlpha: self.sidePanelVisible ? 1 : 0)
             
             // reposition the center shadow view
             if let overlay = self.centerPanelOverlay {
-                overlay.frame = self.centerPanelFrame(customSize: size)
+                overlay.frame = self.centerPanelFrame(customSize: customSize)
             }
             
             if self.isViewLoaded && self.view.window != nil {
